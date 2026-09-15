@@ -1,5 +1,14 @@
 import { useState } from 'react'
 import './App.css'
+import Confetti from 'react-confetti'
+import dayjs from 'dayjs'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { v4 as uuidv4 } from 'uuid'
+import { ClipLoader, BounceLoader, RingLoader, PulseLoader } from 'react-spinners'
+import { TypeAnimation } from 'react-type-animation'
+
+
 
 // ============================================
 // EXERCÍCIO 1 - react-icons (JÁ FEITO - EXEMPLO)
@@ -102,75 +111,79 @@ import { FaReact, FaNodeJs, FaNpm } from 'react-icons/fa'
           </div>
         </div>
 
-        {/* ============================================ */}
-        {/* EXERCÍCIO 2 - react-confetti */}
-        {/* ============================================ */}
-        <div className="card">
-          <div className="card-header">
-            <h3>Exercicio 2 - react-confetti <span className="badge badge-todo">TODO</span></h3>
-          </div>
-          <div className="card-body">
-            <p><strong>Pacote:</strong> <code>react-confetti</code> - Animacao de confetes na tela</p>
-            <p><strong>Instalar:</strong> <code>npm install react-confetti</code></p>
+      {/* ============================================ */}
+{/* EXERCÍCIO 2 - react-confetti */}
+{/* ============================================ */}
+<div className="card">
+  <div className="card-header">
+    <h3>Exercicio 2 - react-confetti <span className="badge badge-todo">TODO</span></h3>
+  </div>
+  <div className="card-body">
+    <p><strong>Pacote:</strong> <code>react-confetti</code> - Animacao de confetes na tela</p>
+    <p><strong>Instalar:</strong> <code>npm install react-confetti</code></p>
 
-            <ul className="checklist">
-              <li>Instale o pacote react-confetti</li>
-              <li>Descomente o import no topo do App.jsx</li>
-              <li>Renderize {"<Confetti />"} quando showConfetti for true</li>
-              <li>O botao abaixo ja alterna o estado!</li>
-            </ul>
+    <ul className="checklist">
+      <li>Instale o pacote react-confetti</li>
+      <li>Descomente o import no topo do App.jsx</li>
+      <li>Renderize {"<Confetti />"} quando showConfetti for true</li>
+      <li>O botao abaixo ja alterna o estado!</li>
+    </ul>
 
-            <pre>{`// Import:
+    <pre>{`// Import:
 import Confetti from 'react-confetti'
 
 // No JSX (dentro do card-body, onde diz "Confetes vao aparecer aqui"):
 {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}`}</pre>
 
-            <button className="btn btn-green" onClick={() => setShowConfetti(!showConfetti)}>
-              {showConfetti ? 'Parar Confetes' : 'Soltar Confetes!'}
-            </button>
+    <button className="btn btn-green" onClick={() => setShowConfetti(!showConfetti)}>
+      {showConfetti ? 'Parar Confetes' : 'Soltar Confetes!'}
+    </button>
 
-            <div className="preview-area">
-              {/* TODO: Renderize <Confetti /> aqui quando showConfetti for true */}
-              {showConfetti ? '🎉 Confetes deveriam estar aparecendo!' : 'Confetes vao aparecer aqui'}
-            </div>
-          </div>
-        </div>
+    <div className="preview-area">
+      {showConfetti && (
+        <Confetti 
+          width={window.innerWidth} 
+          height={window.innerHeight} 
+        />
+      )}
+      {showConfetti ? '🎉 Confetes deveriam estar aparecendo!' : 'Confetes vao aparecer aqui'}
+    </div>
+  </div>
+</div>
 
-        {/* ============================================ */}
-        {/* EXERCÍCIO 3 - dayjs */}
-        {/* ============================================ */}
-        <div className="card">
-          <div className="card-header">
-            <h3>Exercicio 3 - dayjs <span className="badge badge-todo">TODO</span></h3>
-          </div>
-          <div className="card-body">
-            <p><strong>Pacote:</strong> <code>dayjs</code> - Manipulacao de datas (leve e moderno)</p>
-            <p><strong>Instalar:</strong> <code>npm install dayjs</code></p>
+      {/* ============================================ */}
+{/* EXERCÍCIO 3 - dayjs */}
+{/* ============================================ */}
+<div className="card">
+  <div className="card-header">
+    <h3>Exercicio 3 - dayjs <span className="badge badge-todo">TODO</span></h3>
+  </div>
+  <div className="card-body">
+    <p><strong>Pacote:</strong> <code>dayjs</code> - Manipulacao de datas (leve e moderno)</p>
+    <p><strong>Instalar:</strong> <code>npm install dayjs</code></p>
 
-            <ul className="checklist">
-              <li>Instale o pacote dayjs</li>
-              <li>Descomente o import no topo</li>
-              <li>Substitua os "???" pelos valores usando dayjs</li>
-            </ul>
+    <ul className="checklist">
+      <li>Instale o pacote dayjs</li>
+      <li>Descomente o import no topo</li>
+      <li>Substitua os "???" pelos valores usando dayjs</li>
+    </ul>
 
-            <pre>{`import dayjs from 'dayjs'
+    <pre>{`import dayjs from 'dayjs'
 
 dayjs().format('DD/MM/YYYY')           // "15/09/2026"
 dayjs().format('HH:mm:ss')            // "14:30:00"
 dayjs().format('dddd')                 // "Monday"
 dayjs('2026-12-25').diff(dayjs(), 'day') // dias até Natal`}</pre>
 
-            <div className="preview-area" style={{ textAlign: 'left', fontStyle: 'normal', fontFamily: 'monospace' }}>
-              {/* TODO: Substitua os "???" usando dayjs() */}
-              <p>Data de hoje: <strong>???</strong></p>
-              <p>Hora atual: <strong>???</strong></p>
-              <p>Dia da semana: <strong>???</strong></p>
-              <p>Dias para o Natal: <strong>???</strong></p>
-              <p>Dias desde 01/01/2000: <strong>???</strong></p>
-            </div>
-          </div>
-        </div>
+    <div className="preview-area" style={{ textAlign: 'left', fontStyle: 'normal', fontFamily: 'monospace' }}>
+      <p>Data de hoje: <strong>{dayjs().format('DD/MM/YYYY')}</strong></p>
+      <p>Hora atual: <strong>{dayjs().format('HH:mm:ss')}</strong></p>
+      <p>Dia da semana: <strong>{dayjs().format('dddd')}</strong></p>
+      <p>Dias para o Natal: <strong>{dayjs('2026-12-25').diff(dayjs(), 'day')}</strong></p>
+      <p>Dias desde 01/01/2000: <strong>{dayjs().diff(dayjs('2000-01-01'), 'day')}</strong></p>
+    </div>
+  </div>
+</div>
 
         {/* ============================================ */}
         {/* EXERCÍCIO 4 - react-toastify */}
@@ -206,48 +219,50 @@ toast.warn('Cuidado!')`}</pre>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
               <button className="btn btn-green" onClick={() => {
                 // TODO: Substitua o alert por toast.success('Parabens! Voce conseguiu!')
-                alert('TODO: Substitua por toast.success()')
-              }}>Sucesso</button>
+                    toast.success('Deu certo!')
+                    }}>Sucesso</button>
 
               <button className="btn" style={{ background: '#da3633' }} onClick={() => {
                 // TODO: Substitua o alert por toast.error('Algo deu errado!')
-                alert('TODO: Substitua por toast.error()')
+               toast.error('Deu erro!')
               }}>Erro</button>
 
               <button className="btn btn-blue" onClick={() => {
                 // TODO: Substitua o alert por toast.info('Voce sabia? NPM tem mais de 2 milhões de pacotes!')
-                alert('TODO: Substitua por toast.info()')
+                toast.info('Informação')
               }}>Info</button>
 
               <button className="btn" style={{ background: '#d29922' }} onClick={() => {
                 // TODO: Substitua o alert por toast.warn('Cuidado com pacotes desconhecidos!')
-                alert('TODO: Substitua por toast.warn()')
+                toast.warn('Cuidado!')
               }}>Aviso</button>
             </div>
 
-            {/* TODO: Adicione <ToastContainer /> aqui */}
+            {<ToastContainer />
+}
+            
           </div>
         </div>
 
         {/* ============================================ */}
-        {/* EXERCÍCIO 5 - uuid */}
-        {/* ============================================ */}
-        <div className="card">
-          <div className="card-header">
-            <h3>Exercicio 5 - uuid <span className="badge badge-todo">TODO</span></h3>
-          </div>
-          <div className="card-body">
-            <p><strong>Pacote:</strong> <code>uuid</code> - Gera identificadores unicos universais</p>
-            <p><strong>Instalar:</strong> <code>npm install uuid</code></p>
+{/* EXERCÍCIO 5 - uuid */}
+{/* ============================================ */}
+<div className="card">
+  <div className="card-header">
+    <h3>Exercicio 5 - uuid <span className="badge badge-todo">TODO</span></h3>
+  </div>
+  <div className="card-body">
+    <p><strong>Pacote:</strong> <code>uuid</code> - Gera identificadores unicos universais</p>
+    <p><strong>Instalar:</strong> <code>npm install uuid</code></p>
 
-            <ul className="checklist">
-              <li>Instale o pacote uuid</li>
-              <li>Descomente o import no topo</li>
-              <li>No botao "Adicionar", gere um id com uuidv4()</li>
-              <li>Adicione o usuario ao estado com setUsuarios</li>
-            </ul>
+    <ul className="checklist">
+      <li>Instale o pacote uuid</li>
+      <li>Descomente o import no topo</li>
+      <li>No botao "Adicionar", gere um id com uuidv4()</li>
+      <li>Adicione o usuario ao estado com setUsuarios</li>
+    </ul>
 
-            <pre>{`import { v4 as uuidv4 } from 'uuid'
+    <pre>{`import { v4 as uuidv4 } from 'uuid'
 
 // Criar usuario:
 const novoUsuario = {
@@ -257,60 +272,62 @@ const novoUsuario = {
 }
 setUsuarios([...usuarios, novoUsuario])`}</pre>
 
-            <div className="input-group">
-              <input
-                type="text"
-                placeholder="Nome do usuario"
-                value={nomeInput}
-                onChange={(e) => setNomeInput(e.target.value)}
-              />
-              <button className="btn btn-green" onClick={() => {
-                if (!nomeInput.trim()) return
-                // TODO: Crie o usuario com uuidv4() como id
-                // TODO: Adicione ao array com setUsuarios
-                // TODO: Limpe o input com setNomeInput('')
+    <div className="input-group">
+      <input
+        type="text"
+        placeholder="Nome do usuario"
+        value={nomeInput}
+        onChange={(e) => setNomeInput(e.target.value)}
+      />
+      <button className="btn btn-green" onClick={() => {
+        if (!nomeInput.trim()) return
 
-                // Remova este alert quando implementar:
-                alert('TODO: Implemente a criação do usuario com uuid')
-              }}>Adicionar</button>
+        const novoUsuario = {
+          id: uuidv4(),
+          nome: nomeInput,
+          criadoEm: new Date().toLocaleString()
+        }
+
+        setUsuarios([...usuarios, novoUsuario])
+        setNomeInput('')
+      }}>Adicionar</button>
+    </div>
+
+    <div className="preview-area" style={{ textAlign: 'left', fontStyle: 'normal' }}>
+      {usuarios.length === 0
+        ? 'Nenhum usuario criado ainda...'
+        : usuarios.map(u => (
+            <div key={u.id} style={{ marginBottom: '0.5rem', padding: '0.5rem', background: '#161b22', borderRadius: '4px' }}>
+              <strong>{u.nome}</strong>
+              <br />
+              <span style={{ color: '#484f58', fontSize: '0.8rem' }}>ID: {u.id}</span>
+              <br />
+              <span style={{ color: '#484f58', fontSize: '0.8rem' }}>Criado em: {u.criadoEm}</span>
             </div>
+          ))
+      }
+    </div>
+  </div>
+</div>
+      {/* ============================================ */}
+{/* EXERCÍCIO 6 - react-spinners */}
+{/* ============================================ */}
+<div className="card">
+  <div className="card-header">
+    <h3>Exercicio 6 - react-spinners <span className="badge badge-todo">TODO</span></h3>
+  </div>
+  <div className="card-body">
+    <p><strong>Pacote:</strong> <code>react-spinners</code> - Animacoes de carregamento</p>
+    <p><strong>Instalar:</strong> <code>npm install react-spinners</code></p>
 
-            <div className="preview-area" style={{ textAlign: 'left', fontStyle: 'normal' }}>
-              {usuarios.length === 0
-                ? 'Nenhum usuario criado ainda...'
-                : usuarios.map(u => (
-                    <div key={u.id} style={{ marginBottom: '0.5rem', padding: '0.5rem', background: '#161b22', borderRadius: '4px' }}>
-                      <strong>{u.nome}</strong>
-                      <br />
-                      <span style={{ color: '#484f58', fontSize: '0.8rem' }}>ID: {u.id}</span>
-                      <br />
-                      <span style={{ color: '#484f58', fontSize: '0.8rem' }}>Criado em: {u.criadoEm}</span>
-                    </div>
-                  ))
-              }
-            </div>
-          </div>
-        </div>
+    <ul className="checklist">
+      <li>Instale o pacote react-spinners</li>
+      <li>Descomente o import no topo</li>
+      <li>Renderize os spinners na area de preview</li>
+      <li>Use loading como prop para controlar visibilidade</li>
+    </ul>
 
-        {/* ============================================ */}
-        {/* EXERCÍCIO 6 - react-spinners */}
-        {/* ============================================ */}
-        <div className="card">
-          <div className="card-header">
-            <h3>Exercicio 6 - react-spinners <span className="badge badge-todo">TODO</span></h3>
-          </div>
-          <div className="card-body">
-            <p><strong>Pacote:</strong> <code>react-spinners</code> - Animacoes de carregamento</p>
-            <p><strong>Instalar:</strong> <code>npm install react-spinners</code></p>
-
-            <ul className="checklist">
-              <li>Instale o pacote react-spinners</li>
-              <li>Descomente o import no topo</li>
-              <li>Renderize os spinners na area de preview</li>
-              <li>Use loading como prop para controlar visibilidade</li>
-            </ul>
-
-            <pre>{`import { ClipLoader, BounceLoader, RingLoader, PulseLoader } from 'react-spinners'
+    <pre>{`import { ClipLoader, BounceLoader, RingLoader, PulseLoader } from 'react-spinners'
 
 // No JSX:
 <ClipLoader color="#58a6ff" loading={loading} size={50} />
@@ -318,43 +335,42 @@ setUsuarios([...usuarios, novoUsuario])`}</pre>
 <RingLoader color="#f0883e" loading={loading} size={50} />
 <PulseLoader color="#a371f7" loading={loading} size={15} />`}</pre>
 
-            <button className="btn btn-blue" onClick={() => setLoading(!loading)}>
-              {loading ? 'Parar Loading' : 'Mostrar Spinners'}
-            </button>
+    <button className="btn btn-blue" onClick={() => setLoading(!loading)}>
+      {loading ? 'Parar Loading' : 'Mostrar Spinners'}
+    </button>
 
-            <div className="preview-area" style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'center', minHeight: '80px', fontStyle: 'normal' }}>
-              {loading
-                ? <>
-                    {/* TODO: Substitua estes textos pelos componentes de spinner */}
-                    <span>ClipLoader</span>
-                    <span>BounceLoader</span>
-                    <span>RingLoader</span>
-                    <span>PulseLoader</span>
-                  </>
-                : 'Clique no botao para ver os spinners'
-              }
-            </div>
-          </div>
-        </div>
+    <div className="preview-area" style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'center', minHeight: '80px', fontStyle: 'normal' }}>
+      {loading
+        ? <>
+            <ClipLoader color="#58a6ff" loading={loading} size={50} />
+            <BounceLoader color="#7ee787" loading={loading} size={60} />
+            <RingLoader color="#f0883e" loading={loading} size={50} />
+            <PulseLoader color="#a371f7" loading={loading} size={15} />
+          </>
+        : 'Clique no botao para ver os spinners'
+      }
+    </div>
+  </div>
+</div>
 
-        {/* ============================================ */}
-        {/* EXERCÍCIO 7 - react-type-animation */}
-        {/* ============================================ */}
-        <div className="card">
-          <div className="card-header">
-            <h3>Exercicio 7 - react-type-animation <span className="badge badge-todo">TODO</span></h3>
-          </div>
-          <div className="card-body">
-            <p><strong>Pacote:</strong> <code>react-type-animation</code> - Efeito de digitacao automatica</p>
-            <p><strong>Instalar:</strong> <code>npm install react-type-animation</code></p>
+       {/* ============================================ */}
+{/* EXERCÍCIO 7 - react-type-animation */}
+{/* ============================================ */}
+<div className="card">
+  <div className="card-header">
+    <h3>Exercicio 7 - react-type-animation <span className="badge badge-todo">TODO</span></h3>
+  </div>
+  <div className="card-body">
+    <p><strong>Pacote:</strong> <code>react-type-animation</code> - Efeito de digitacao automatica</p>
+    <p><strong>Instalar:</strong> <code>npm install react-type-animation</code></p>
 
-            <ul className="checklist">
-              <li>Instale o pacote react-type-animation</li>
-              <li>Descomente o import no topo</li>
-              <li>Substitua o texto estatico pelo componente TypeAnimation</li>
-            </ul>
+    <ul className="checklist">
+      <li>Instale o pacote react-type-animation</li>
+      <li>Descomente o import no topo</li>
+      <li>Substitua o texto estatico pelo componente TypeAnimation</li>
+    </ul>
 
-            <pre>{`import { TypeAnimation } from 'react-type-animation'
+    <pre>{`import { TypeAnimation } from 'react-type-animation'
 
 // No JSX:
 <TypeAnimation
@@ -370,13 +386,22 @@ setUsuarios([...usuarios, novoUsuario])`}</pre>
   style={{ color: '#58a6ff' }}
 />`}</pre>
 
-            <div className="preview-area" style={{ fontStyle: 'normal', fontSize: '1.5rem' }}>
-              {/* TODO: Substitua o texto abaixo pelo componente <TypeAnimation /> */}
-              <h2 style={{ color: '#58a6ff' }}>Texto animado vai aparecer aqui...</h2>
-            </div>
-          </div>
-        </div>
-
+    <div className="preview-area" style={{ fontStyle: 'normal', fontSize: '1.5rem' }}>
+      <TypeAnimation
+        sequence={[
+          'Eu amo React!', 2000,
+          'Eu amo Node.js!', 2000,
+          'Eu amo NPM!', 2000,
+          'Eu amo programar!', 2000,
+        ]}
+        wrapper="h2"
+        speed={50}
+        repeat={Infinity}
+        style={{ color: '#58a6ff' }}
+      />
+    </div>
+  </div>
+</div>
         {/* ============================================ */}
         {/* EXERCÍCIO BÔNUS */}
         {/* ============================================ */}
